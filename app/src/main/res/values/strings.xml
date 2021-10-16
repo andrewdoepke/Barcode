@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Barcode Validator</string>
+    <string name="go">Go!</string>
+    <string name="what_type_of_barcode_is_this">What type of Barcode is this?</string>
+    <string name="generate_check_digit_or_validate">Generate Check Digit or Validate?</string>
 </resources>

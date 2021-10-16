@@ -6,13 +6,91 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="371dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="38dp"
+        android:scaleType="center"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="367dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="43dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/txt_vorg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
     <TextView
+        android:id="@+id/txt_vorg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginBottom="23dp"
+        android:text="@string/generate_check_digit_or_validate"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/spin_VorG"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+    <Spinner
+        android:id="@+id/spin_VorG"
+        android:layout_width="204dp"
+        android:layout_height="27dp"
+        android:layout_alignBottom="@id/txt_vorg"
+        android:layout_marginBottom="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_algo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_vorg" />
+
+    <TextView
+        android:id="@+id/txt_algo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:text="@string/what_type_of_barcode_is_this"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/spin_Algo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_VorG" />
+
+    <Spinner
+        android:id="@+id/spin_Algo"
+        android:layout_width="173dp"
+        android:layout_height="26dp"
+        android:layout_alignBottom="@id/txt_algo"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_algo" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="63dp"
+        android:text="@string/go"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/spin_Algo"
+        app:layout_constraintTop_toBottomOf="@+id/spin_Algo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
