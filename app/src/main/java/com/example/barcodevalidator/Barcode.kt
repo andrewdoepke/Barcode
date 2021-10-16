@@ -37,10 +37,12 @@ class Barcode (code: String, type: String, isComplete: Boolean){
 
 
     private fun validate(): Boolean {
-        if(checkD < 0) { //covers cases where an incorrect length is passed or otherwise error
+        val tCD = generateCD()
+
+        if(tCD < 0) { //covers cases where an incorrect length is passed or otherwise error
             return false;
         }
-        return checkD == generateCD() //generate check dig and test if current is stored
+        return checkD == tCD //generate check dig and test if current is stored
     }
 
     private fun generateCD(): Int {
@@ -54,6 +56,7 @@ class Barcode (code: String, type: String, isComplete: Boolean){
         }
         return -1
     }
+
 
     private fun isbn13CD(): Int {
         var dig: Int = -1
