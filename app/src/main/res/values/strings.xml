@@ -3,4 +3,16 @@
     <string name="go">Go!</string>
     <string name="what_type_of_barcode_is_this">What type of Barcode is this?</string>
     <string name="generate_check_digit_or_validate">Generate Check Digit or Validate?</string>
+    <string name="barcodeDes">Barcode</string>
+    <string name="check_digit">Check Digit</string>
+    <string name="barcode_body">Barcode Body (No Check Digit)</string>
+    <string name="reset">Reset</string>
+    <string-array name="AlgoTypes">
+        <item>UPC</item>
+        <item>ISBN 13</item>
+    </string-array>
+    <string-array name="VorG">
+        <item>Validate Barcode</item>
+        <item>Create Check Digit</item>
+    </string-array>
 </resources>

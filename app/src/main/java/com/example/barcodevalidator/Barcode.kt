@@ -1,38 +1,41 @@
 package com.example.barcodevalidator
 
-import java.io.OutputStream
-
-class Barcode (code: String, type: String, isComplete: Boolean){
-    var code = code
-    var type = type
-    var theBeef: String = ""
-    var checkD: Int = -1
-    var isComplete = isComplete
-    var isValid: Boolean = false
+class Barcode (idNo: String, checkDig: String, type: String){
+    private var theBeef: String = idNo //first part of barcode
+    private var type = type
+    private var checkD: Int = -1
+    private var code: String = theBeef
+    private var isValid: Boolean = false
 
     init {
-        if(!this.isComplete){ //if it's not a complete code, generate the check digit and validate it
-            theBeef = this.code
-            checkD = generateCD()
-            this.code = theBeef + checkD
-            isValid = validate()
-            this.isComplete = true
-        } else { //this is a complete code
-            theBeef = code.substring(0, code.length-1)
-            checkD = code[code.length - 1].digitToInt()
-            isValid = validate()
-            //isComplete is already true
-            //code is already full
+        if(checkDig.trim() == ""){ //no check digit passed, so generate one
+            this.checkD = generateCD()
+        } else {
+            this.checkD = checkDig.toInt()
+
+            if(this.checkD !in 0..9){ //needs to be a single digit
+                checkD = -1 //err value
+            }
         }
+
+        this.code += checkD //add check digit to code
+        isValid = validate() //validate code
     }
 
     override fun toString(): String {
         return "Barcode: " + code + "\n" +
                 "Type: " + type + "\n" +
-                "Is Complete? " + isComplete + "\n" +
                 "Is Valid? " + isValid + "\n" +
                 "Barcode Body: " + theBeef + "\n" +
                 "Check Digit: " + checkD
+    }
+
+    fun getValidity(): Boolean{
+        return isValid
+    }
+
+    fun fullCode(): String{
+        return code
     }
 
 
@@ -42,6 +45,11 @@ class Barcode (code: String, type: String, isComplete: Boolean){
         if(tCD < 0) { //covers cases where an incorrect length is passed or otherwise error
             return false;
         }
+
+        if(theBeef == ""){
+            return false
+        }
+
         return checkD == tCD //generate check dig and test if current is stored
     }
 
