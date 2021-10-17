@@ -7,6 +7,8 @@
     <string name="check_digit">Check Digit</string>
     <string name="barcode_body">Barcode Body (No Check Digit)</string>
     <string name="reset">Reset</string>
+    <string name="barcode_body_no_check_digit">Barcode Body (No Check Digit)</string>
+    <string name="chk_dig">Chk Dig</string>
     <string-array name="AlgoTypes">
         <item>UPC</item>
         <item>ISBN 13</item>
