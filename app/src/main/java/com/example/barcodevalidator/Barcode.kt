@@ -92,9 +92,6 @@ class Barcode (idNo: String, checkDig: String, type: String){
             10 - dig
         }
 
-
-        //something broke
-        return -1
     }
 
     private fun upcCD(): Int{
@@ -129,9 +126,6 @@ class Barcode (idNo: String, checkDig: String, type: String){
         } else { //otherwise return 10 - number
             10 - dig
         }
-
-        //something broke
-        return -1
 
     }
 }

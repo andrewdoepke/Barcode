@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BarcodeValidator">
+
+        <activity
+            android:name=".About"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

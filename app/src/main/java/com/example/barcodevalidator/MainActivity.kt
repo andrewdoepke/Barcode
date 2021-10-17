@@ -1,10 +1,14 @@
 package com.example.barcodevalidator
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
@@ -27,19 +31,34 @@ class MainActivity : AppCompatActivity(){
     lateinit var spinV: Spinner
     lateinit var spinA: Spinner
     private var imgSt: Int = 1
+    private var imgVis: Int = 0
 
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("b_codeDisp", codeDisp.text.toString())
         outState.putInt("b_imgDisp", imgSt)
+        outState.putInt("b_imgVis", imgVis)
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inf: MenuInflater = menuInflater
+        inf.inflate(R.menu.menu, menu)
+        return true
     }
-/*
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.about -> {
+                imgVis = 0
+                val intent = Intent(this, About::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
-*/
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -62,7 +81,7 @@ class MainActivity : AppCompatActivity(){
 
     if(savedInstanceState != null){
         imgSt = savedInstanceState.get("b_imgDisp") as Int
-        imgDisp.visibility = View.VISIBLE
+        imgVis = savedInstanceState.get("b_imgVis") as Int
     }
 
         if(imgSt == 1){
@@ -70,6 +89,13 @@ class MainActivity : AppCompatActivity(){
         } else {
             imgDisp.setImageResource(R.drawable.valid)
         }
+
+        if(imgVis == 1){
+            imgDisp.visibility = View.VISIBLE
+        } else {
+            imgDisp.visibility = View.INVISIBLE
+        }
+
 
 
 //------------------------------------------------------------------------------------------------------------------------//
@@ -160,6 +186,7 @@ class MainActivity : AppCompatActivity(){
 
             //make image visible
             imgDisp.visibility = View.VISIBLE
+            imgVis = 1
 
             //Draw Barcode and display information
             imgSt = if(!currBarcode.getValidity()){

@@ -9,6 +9,11 @@
     <string name="reset">Reset</string>
     <string name="barcode_body_no_check_digit">Barcode Body (No Check Digit)</string>
     <string name="chk_dig">Chk Dig</string>
+    <string name="some_fries_i_got_many_years_ago">Some fries I got many years ago.</string>
+    <string name="back">BACK</string>
+    <string name="abt">About</string>
+    <string name="para1">This app can validate a barcode that is currently in the standard of UPC or ISBN 13. This can also calculate a check digit for an incomplete barcode, making it valid. We use this at work, and I\'ll probably be using tools like this eventually.\n\n In the future, I would like to add scanning functionality, as well as a bunch of other barcode standards. \n\n Pretty Cool!</string>
+    <string name="fries">fries</string>
     <string-array name="AlgoTypes">
         <item>UPC</item>
         <item>ISBN 13</item>
@@ -17,4 +22,15 @@
         <item>Validate Barcode</item>
         <item>Create Check Digit</item>
     </string-array>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="main_application">Main Application</string>
+    <string name="about">About</string>
 </resources>
