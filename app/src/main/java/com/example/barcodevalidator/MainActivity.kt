@@ -2,26 +2,23 @@ package com.example.barcodevalidator
 
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import androidx.core.os.bundleOf
+import androidx.appcompat.app.AppCompatActivity
 import com.example.barcodevalidator.databinding.ActivityMainBinding
 
 private lateinit var binding: ActivityMainBinding
-private var state: Bundle = Bundle()
 
 class MainActivity : AppCompatActivity(){
 
     private lateinit var currBarcode: Barcode
 
+    //initialize variables for project
     private var currAlgo = ""
     private var barCodes: ArrayList<Barcode> = ArrayList() //store barcodes. Last index will always be current
     lateinit var currIdNoTV: EditText
@@ -33,7 +30,7 @@ class MainActivity : AppCompatActivity(){
     private var imgSt: Int = 1
     private var imgVis: Int = 0
 
-
+    //save information
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("b_codeDisp", codeDisp.text.toString())
@@ -41,12 +38,14 @@ class MainActivity : AppCompatActivity(){
         outState.putInt("b_imgVis", imgVis)
     }
 
+    //inflate custom menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inf: MenuInflater = menuInflater
         inf.inflate(R.menu.menu, menu)
         return true
     }
 
+    //add functionality to menu item
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.about -> {
@@ -59,6 +58,7 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
+    //oncreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity(){
         val view = binding.root
         setContentView(view)
 
+        //set values
         currIdNoTV = binding.editTextNumber
         currCheckDTV = binding.editTextNumber2
 
@@ -76,13 +77,13 @@ class MainActivity : AppCompatActivity(){
             codeDisp.text = savedInstanceState.get("b_codeDisp") as String
         }
 
-    imgDisp = binding.image
-    imgDisp.visibility = View.INVISIBLE
+        imgDisp = binding.image
+        imgDisp.visibility = View.INVISIBLE
 
-    if(savedInstanceState != null){
-        imgSt = savedInstanceState.get("b_imgDisp") as Int
-        imgVis = savedInstanceState.get("b_imgVis") as Int
-    }
+        if(savedInstanceState != null){
+            imgSt = savedInstanceState.get("b_imgDisp") as Int
+            imgVis = savedInstanceState.get("b_imgVis") as Int
+        }
 
         if(imgSt == 1){
             imgDisp.setImageResource(R.drawable.invalid)
@@ -198,6 +199,7 @@ class MainActivity : AppCompatActivity(){
             }
         }
 
+        //add reset functionality
         binding.reset.setOnClickListener { //clear all fields
             finish()
             overridePendingTransition(0, 0)

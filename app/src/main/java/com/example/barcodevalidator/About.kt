@@ -7,11 +7,10 @@ import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.barcodevalidator.databinding.ActivityAboutBinding
-import com.example.barcodevalidator.databinding.ActivityMainBinding
+
 private lateinit var binding: ActivityAboutBinding
+
 class About : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
